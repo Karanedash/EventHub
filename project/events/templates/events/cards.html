@@ -1,13 +1,17 @@
 <div class="col">
     <div class="card h-100">
+        {% if event.image %}
+            <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}" style="height: 60%">
+        {% else %}
+            <div class="card-img-top d-flex bg-light align-items-center text-center justify-content-center fs-4" style="height: 60%">Нет изображения</div>
+        {% endif %}
         <div class="card-body">
             <h5 class="card-title">{{ event.title }}</h5>
             <p class="card-text">{{ event.short_description|truncatewords:25 }}</p>
             <p class="card-text text-muted mb-0">{{ event.date|date:"d.m.Y H:i" }}</p>
             <p class="card-text">{{ event.location }}</p>
+            <a href="#" class="btn btn-primary mt-4">Подробнее</a>
         </div>
-        <div class="card-footer bg-transparent border-0 pb-3">
-            <a href="#" class="btn btn-primary">Подробнее</a>
-        </div>
+
     </div>
 </div>
