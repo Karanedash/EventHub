@@ -8,8 +8,8 @@
 
   <h2 class="text-center mb-4" id="closest">Ближайшие мероприятия</h2>
   <div class="row g-4">
-    {% for event in events %}
-      {% include "events/cards" %}
+    {% for event in latest_event_list %}
+      {% include "events/cards.html" %}
     {% empty %}
       <div class="col-12 text-center mt-5">Пока нет мероприятий</div>
     {% endfor %}
