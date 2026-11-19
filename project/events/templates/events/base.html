@@ -12,7 +12,7 @@
         <nav class="navbar justify-content-center bg-dark">
             <ul class="nav gap-3">
                 <li class="nav-item">
-                    <a href="home.html" class="nav-link text-white">Главная</a>
+                    <a href="{% url 'main' %}" class="nav-link text-white">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a href="#description" class="nav-link text-white">Описание проекта</a>
@@ -21,7 +21,7 @@
                     <a href="#closest" class="nav-link text-white">Ближайшие мероприятия</a>
                 </li>
                 <li class="nav-item">
-                    <a href="event_list.html" class="nav-link text-white">Полный список мероприятий</a>
+                    <a href="{% url 'event_list' %}" class="nav-link text-white">Полный список мероприятий</a>
                 </li>
             </ul>
         </nav>
