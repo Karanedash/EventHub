@@ -1,0 +1,17 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+  <section class="text-center mb-5" id="description">
+    <h2 class="h3">О проекте</h2>
+    <p class="lead">Краткое описание проекта в одном-двух предложениях.</p>
+  </section>
+
+  <h2 class="text-center mb-4" id="closest">Ближайшие мероприятия</h2>
+  <div class="row g-4">
+    {% for event in events %}
+      {% include "events/cards" %}
+    {% empty %}
+      <div class="col-12 text-center mt-5">Пока нет мероприятий</div>
+    {% endfor %}
+  </div>
+{% endblock %}
