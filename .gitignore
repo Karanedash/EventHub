@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Окружение
+venv/
+.venv/
+
+# Локальные настройки и секреты
+.env
+.env.*
+!.env.example
+
+# База данных
+db.sqlite3
+*.sqlite3
+
+# Загруженные файлы
+project/media/
+
+# IDE
+.idea/

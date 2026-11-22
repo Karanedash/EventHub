@@ -1,0 +1,21 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+  <section class="text-center mb-5" id="description">
+    <h2 class="h3">О проекте</h2>
+    <p class="lead">Сайт для просмотра и регистрации на мероприятия</p>
+  </section>
+
+  <h2 class="text-center mb-4" id="closest">Ближайшие мероприятия</h2>
+  <div class="row g-5">
+    {% for event in latest_event_list %}
+      {% include "events/cards.html" %}
+    {% empty %}
+      <div class="col-12 text-center mt-5">Пока нет мероприятий</div>
+    {% endfor %}
+  </div>
+
+  <div class="text-center mt-5">
+      <a href="{% url 'event_list' %}" class="btn btn-outline-primary">Все мероприятия</a>
+  </div>
+{% endblock %}

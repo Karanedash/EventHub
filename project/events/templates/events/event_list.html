@@ -1,0 +1,12 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+  <h2 class="text-center mb-4" id="closest">Мероприятия</h2>
+  <div class="row g-4">
+    {% for event in full_event_list %}
+      {% include "events/cards.html" %}
+    {% empty %}
+      <div class="col-12 text-center mt-5">Пока нет мероприятий</div>
+    {% endfor %}
+  </div>
+{% endblock %}
