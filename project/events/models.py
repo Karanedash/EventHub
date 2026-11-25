@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Event(models.Model):
@@ -14,14 +15,21 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+
 class Registration(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, verbose_name="Мероприятие")
     name = models.CharField("Имя", max_length=20)
     email = models.EmailField("Email")
     phone = models.CharField("Номер телефона", max_length=12, blank=True)
     comment = models.TextField("Комментарий", blank=True)
-    status = models.BooleanField()
-    created_at = models.DateTimeField("Дата создания")
+    created_at = models.DateTimeField("Дата создания", default=timezone.now)
+
+    status_choises = [("new", "Новая"), ("confirmed", "Подтверждена"), ("cancelled", "Отменена")]
+    status = models.CharField("Статус заявки", max_length=20, choices=status_choises, default="new")
+
+    def __str__(self):
+        return f"Запись на мероприятие {self.event.title}"
+
 
 class ContactMessage(models.Model):
     name = models.CharField("Имя", max_length=20)
