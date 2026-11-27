@@ -28,7 +28,7 @@ def reg(request, event_id):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data["email"]
+            email = form.cleaned_data["email"].strip().lower()
             if Registration.objects.filter(email=email, event=event).exists():
                 form.add_error("email", "Такой email уже записан на мероприятие")
             else:
