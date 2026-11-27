@@ -10,7 +10,7 @@ class Event(models.Model):
     location = models.CharField("Место проведения", max_length=100)
     image = models.ImageField("Изображение", upload_to="events/", blank=True)
     is_published = models.BooleanField("Опубликовано", default=False)
-    capacity = models.PositiveIntegerField("Вместимость", blank=True)
+    capacity = models.PositiveIntegerField("Вместимость", blank=True, null=True)
 
     def __str__(self):
         return self.title

@@ -1,7 +1,12 @@
 from django.contrib import admin
 from .models import Event, Registration
 # Register your models here.
-admin.site.register(Event)
+class AdminEvent(admin.ModelAdmin):
+    search_fields = ("title", "location")
+    list_filter = ["date"]
+
+
+admin.site.register(Event, AdminEvent)
 
 
 class AdminRegister(admin.ModelAdmin):
