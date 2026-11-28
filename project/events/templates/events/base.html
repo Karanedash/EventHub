@@ -14,12 +14,14 @@
                 <li class="nav-item">
                     <a href="{% url 'main' %}" class="nav-link text-white">Главная</a>
                 </li>
+                {% if request.path == "/" %}
                 <li class="nav-item">
                     <a href="#description" class="nav-link text-white">Описание проекта</a>
                 </li>
                 <li class="nav-item">
                     <a href="#closest" class="nav-link text-white">Ближайшие мероприятия</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a href="{% url 'event_list' %}" class="nav-link text-white">Полный список мероприятий</a>
                 </li>

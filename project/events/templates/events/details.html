@@ -1,0 +1,54 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+    <div class="row g-4 mb-5">
+        {% if event.image %}
+            <div class="col-md-6">
+                <img src="{{ event.image.url }}" alt="{{ event.title }}" class="img-fluid w-100 object-fit-cover" style="max-height: 400px;">
+            </div>
+        {% endif %}
+        <div class="{% if event.image %}col-md-6{% else %}col-md-8 mx-auto{% endif %}">
+            <h1 class="h3 mb-3">{{ event.title }}</h1>
+            <ul class="list-unstyled text-muted">
+                <li><strong>Дата:</strong> {{ event.date|date:"d.m.Y H:i" }}</li>
+                <li><strong>Место:</strong> {{ event.location }}</li>
+                {% if event.capacity %}
+                    <li><strong>Вместимость:</strong> {{ event.capacity }}</li>
+                {% endif %}
+            </ul>
+            <p>{{ event.description }}</p>
+        </div>
+    </div>
+
+    <div class="card mx-auto" style="max-width: 40%;">
+        <div class="card-body">
+            <h2 class="h5 mb-3">Запись на мероприятие</h2>
+            <form action="{% url 'reg' event.id %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.name }}
+                    {{ form.name.errors }}
+                </div>
+                <div class="mb-3">
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+                <div class="mb-3">
+                    {{ form.phone }}
+                    {{ form.phone.errors }}
+                </div>
+                <div class="mb-3">
+                    {{ form.comment }}
+                    {{ form.comment.errors }}
+                </div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
